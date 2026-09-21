@@ -108,7 +108,16 @@
       h: "Same team for 90 days", a: "We build the offers, the messages and the staff training with you. Reply times are written into the contract." },
     { s: 2, q: "It only works on patients we already had",
       d: "It brings in nobody new, and we still cannot tell which ad brought which patient through the door.",
-      h: "We follow the whole path", a: "Ad click to booked chair to next visit. Ad spend and treatment money finally sit in one report." }
+      h: "We follow the whole path", a: "Ad click to booked chair to next visit. Ad spend and treatment money finally sit in one report." },
+    { s: 1, q: "Nobody downloaded the app",
+      d: "We had to ask every patient to go to the App Store. Most never did, so the thing we pay for sits there unused.",
+      h: "No download needed", a: "The first offer opens in a text message and pays on a web page. The app is for regulars who want it, not a wall in front of everyone else." },
+    { s: 2, q: "It turned us into a discount shop",
+      d: "The tool pushes flash sales. Now our patients wait for the next offer instead of booking at full price.",
+      h: "We never cut the price", a: "We fill a slot by offering it to the one patient who is due, at full price. Timing does the work, not a discount." },
+    { s: 1, q: "Our patients got sick of the texts",
+      d: "Every promotion went to the whole list. People started unsubscribing, and some of them were good patients.",
+      h: "A hard limit on messages", a: "Nobody hears from us more than twice a month. That is built in, not a setting someone forgets. We report unsubscribes as a cost." }
   ];
   var flips = $("flips");
   if (flips) {
@@ -144,6 +153,50 @@
   if (expects) {
     expects.innerHTML = EXPECTS.map(function (e) {
       return "<li><span><b>" + e[0] + "</b> " + e[1] + "</span></li>";
+    }).join("");
+  }
+
+  /* ------------------------------------------------- what we do not do */
+  var RULES = [
+    ["We do not blast discounts to your whole list.",
+     "A sale trains patients to wait for the next one, and the price never recovers. We offer the open slot to the one patient who is due, at full price."],
+    ["We do not make patients download an app.",
+     "The first offer arrives as a text and opens on a web page where she can pay. Regulars install the app later if they want it. The download is never the thing standing between you and a sale."],
+    ["We do not message anyone more than twice a month.",
+     "The cap is built into the product, not a setting someone turns off in a slow week. A burnt-out patient list cannot be bought back."],
+    ["We do not hold your patients' money.",
+     "Payments settle to the clinic. We are never the merchant of record, and pre-paid credit sits on your books, where it legally belongs."],
+    ["We do not try to become your record system.",
+     "Your CRM and your charting stay in charge. We write into them. A clinic that leaves us keeps its contacts, balances and history exactly where they already were."]
+  ];
+  var rulesList = $("rules-list");
+  if (rulesList) {
+    rulesList.innerHTML = RULES.map(function (r) {
+      return '<div class="rule"><span class="x" aria-hidden="true">&times;</span>' +
+        "<div><h3>" + r[0] + "</h3><p>" + r[1] + "</p></div></div>";
+    }).join("");
+  }
+
+  /* ------------------------------------------------------ month two */
+  var MONTH2 = [
+    ["Staff quietly work around it",
+     "Injectors earn commission on what they sell. If the app takes the sale and nobody gets the credit, staff start telling patients to book at the desk instead. The product dies without anyone complaining about it.",
+     "Every app sale is credited to the provider who does the treatment."],
+    ["The clinic is already stuck in a contract",
+     "Most clinics worth having are halfway through a multi-year deal with someone else. Telling them to break it is not a plan.",
+     "We run alongside the old tool until their renewal date and import their existing credits and memberships. At renewal the owner is comparing two numbers from their own patient list, not two demos."],
+    ["Credit does not work at the other branch",
+     "Chains of two to ten locations are normal now. Most tools work one location at a time, so a patient's credit is stuck at one address and the owner never sees a combined number.",
+     "One wallet across every location, and one report for the group."],
+    ["Nobody knows how much treatment is owed",
+     "Pre-paid packages are money the clinic has already spent and treatment it still owes. Most owners have no idea how big that number is until someone walks in to redeem.",
+     "We show the total, how old it is, and which patients are sitting on credit they have not used."]
+  ];
+  var m2 = $("month2-list");
+  if (m2) {
+    m2.innerHTML = MONTH2.map(function (x) {
+      return '<div class="card"><h3>' + x[0] + "</h3><p>" + x[1] + "</p>" +
+        '<p class="fix"><b>What we do.</b> ' + x[2] + "</p></div>";
     }).join("");
   }
 
