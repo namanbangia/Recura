@@ -1,4 +1,4 @@
-/* Recura — interactive concept pitch
+/* Recura - interactive concept pitch
    No dependencies. Every module guards its own DOM so one missing node can't take the page down. */
 (function () {
   "use strict";
@@ -114,11 +114,11 @@
   if (flips) {
     flips.innerHTML = COMPLAINTS.map(function (c) {
       var stars = "";
-      for (var i = 0; i < 5; i++) stars += i < c.s ? "★" : "☆";
+      for (var i = 0; i < 5; i++) stars += i < c.s ? "&#9733;" : "&#9734;";
       return '<button class="flip" type="button" aria-pressed="false"><span class="inner">' +
         '<span class="face front">' +
           '<span class="stars" aria-label="' + c.s + ' out of 5">' + stars + "</span>" +
-          "<h3>“" + c.q + "”</h3><p>" + c.d + "</p>" +
+          "<h3>&ldquo;" + c.q + "&rdquo;</h3><p>" + c.d + "</p>" +
           '<span class="turn">What we do &rarr;</span>' +
         "</span>" +
         '<span class="face back"><h3>' + c.h + "</h3><p>" + c.a + "</p>" +
@@ -151,7 +151,7 @@
   var STEPS = [
     { state: "Empty slot", cash: 0,
       cap: "Tuesday 2pm comes free. That is $420 the clinic will not make, and nobody notices until Friday.",
-      rows: [["Tue 2:00pm, empty", "—", true], ["Tue 3:00pm, Dermaplane", "booked", false], ["Tue 4:00pm, Consult", "booked", false]],
+      rows: [["Tue 2:00pm, empty", "-", true], ["Tue 3:00pm, Dermaplane", "booked", false], ["Tue 4:00pm, Consult", "booked", false]],
       phone: "idle" },
     { state: "Finding a patient", cash: 0,
       cap: "Recura looks for a patient who is due, not just anyone with a phone. Priya had Botox 15 weeks ago. She is two weeks late.",
@@ -171,13 +171,13 @@
       phone: "done" }
   ];
   var PHONES = {
-    idle: '<div class="push"><div class="app">Recura · The Skin Room</div><div class="msg">Hi Priya, nothing is due right now. We will let you know.</div></div>' +
+    idle: '<div class="push"><div class="app">Recura &middot; The Skin Room</div><div class="msg">Hi Priya, nothing is due right now. We will let you know.</div></div>' +
           '<div class="pts"><span class="pt">240 points</span><span class="pt">Member since 2024</span></div>',
-    push: '<div class="push"><div class="app">Recura · The Skin Room</div><div class="msg">You are due, Priya. We held tomorrow 2pm for you. $420, and your 240 points cover the aftercare kit.</div></div>' +
+    push: '<div class="push"><div class="app">Recura &middot; The Skin Room</div><div class="msg">You are due, Priya. We held tomorrow 2pm for you. $420, and your 240 points cover the aftercare kit.</div></div>' +
           '<div class="pts"><span class="pt">Tap to book</span><span class="pt">Ends in 24h</span></div>',
-    pay:  '<div class="wallet"><div class="lab">Paying now · Tue 2:00pm</div><div class="amt">$420.00</div><div class="lab">Botox, upper face</div></div>' +
-          '<div class="pts"><span class="pt">Apple Pay</span><span class="pt">or 4 × $105</span></div>',
-    done: '<div class="wallet"><div class="lab">Booked · Tuesday 2:00pm</div><div class="amt">Paid</div><div class="lab">See you Tuesday, Priya</div></div>' +
+    pay:  '<div class="wallet"><div class="lab">Paying now &middot; Tue 2:00pm</div><div class="amt">$420.00</div><div class="lab">Botox, upper face</div></div>' +
+          '<div class="pts"><span class="pt">Apple Pay</span><span class="pt">or 4 &times; $105</span></div>',
+    done: '<div class="wallet"><div class="lab">Booked &middot; Tuesday 2:00pm</div><div class="amt">Paid</div><div class="lab">See you Tuesday, Priya</div></div>' +
           '<div class="pts"><span class="pt">+42 points</span><span class="pt">Next due in 12 weeks</span></div>'
   };
   var step = 0, playTimer = null;
@@ -270,7 +270,7 @@
         if (i >= FILLS.length) {
           runBtn.disabled = false;
           runBtn.textContent = "Run it again";
-          calout.innerHTML = "8 of 11 slots filled · <b>" + usd(total) + "</b> recovered this week";
+          calout.innerHTML = "8 of 11 slots filled &middot; <b>" + usd(total) + "</b> recovered this week";
           return;
         }
         var cell = openCells[i], f = FILLS[i];
@@ -279,7 +279,7 @@
           cell.setAttribute("data-why", f.why);
           cell.innerHTML = '<span class="who">' + f.who + '</span><span class="amt">' + usd(f.amt) + "</span>";
           total += f.amt;
-          calout.innerHTML = (i + 1) + " filled · <b>" + usd(total) + "</b> recovered";
+          calout.innerHTML = (i + 1) + " filled &middot; <b>" + usd(total) + "</b> recovered";
         }
         i++;
         setTimeout(fill, reduce ? 0 : 320);
@@ -394,7 +394,7 @@
       m: [["1.5%", "of what patients spend"], ["2% to 6%", "what this market charges now"]] },
     { id: "fee", pct: 14, color: "var(--r4)", name: "Fee on proven growth",
       d: "8% of the extra revenue the test group proves we created, and never more than twice the monthly fee. If the test group says we added nothing, this is zero. That is the reason a burnt owner signs at all.",
-      m: [["8%", "of the proven gap"], ["2× the monthly fee", "hard limit on the bill"]] },
+      m: [["8%", "of the proven gap"], ["2&times; the monthly fee", "hard limit on the bill"]] },
     { id: "mkt", pct: 6, color: "var(--r1)", name: "Skincare sales",
       d: "10% of skincare shipped straight from the supplier. The clinic earns the margin without holding stock, and neither do we. Small line, almost no cost to run.",
       m: [["10%", "of product sales"], ["Zero", "stock held"]] }
@@ -413,7 +413,7 @@
   if (revbar) {
     revbar.innerHTML = STREAMS.map(function (s) {
       return '<button type="button" role="tab" data-id="' + s.id + '" aria-selected="false" ' +
-        'style="flex:' + s.pct + ';background:' + s.color + '">' + s.name + " · " + s.pct + "%</button>";
+        'style="flex:' + s.pct + ';background:' + s.color + '">' + s.name + " &middot; " + s.pct + "%</button>";
     }).join("");
     Array.prototype.forEach.call(revbar.children, function (b) {
       var go = function () { showStream(b.getAttribute("data-id")); };

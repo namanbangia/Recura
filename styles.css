@@ -132,10 +132,15 @@ a{color:var(--primary-hover)}
 /* ---------- flip cards ---------- */
 .flips{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));margin-top:8px}
 .flip{all:unset;cursor:pointer;display:block;perspective:1200px}
-.flip .inner{position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,.05,.2,1);min-height:200px}
+/* grid-stacked faces: both sit in the same cell, so the card sizes to the taller
+   one. Absolutely positioned faces inside an inline span collapse to zero. */
+.flip .inner{
+  display:grid;grid-template-columns:1fr;transform-style:preserve-3d;
+  transition:transform .6s cubic-bezier(.4,.05,.2,1);min-height:210px;
+}
 .flip[aria-pressed="true"] .inner{transform:rotateY(180deg)}
 .face{
-  position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius);
+  grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius);
   padding:20px;display:flex;flex-direction:column;gap:9px;border:1px solid var(--border);
 }
 .face.front{background:var(--bg-surface);box-shadow:var(--shadow-sm)}
