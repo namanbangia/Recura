@@ -1,5 +1,5 @@
 <title>Recura</title>
-<meta name="description" content="Recura — the repeat-revenue and CRM integration layer for cash-pay clinics. An interactive concept pitch.">
+<meta name="description" content="Recura — an app that brings clinic patients back, takes payment, and writes it into the CRM the clinic already uses. Interactive concept pitch.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="styles.css">
@@ -17,61 +17,53 @@
 
   <header class="hero">
     <div class="hero-copy">
-      <p class="kicker">Concept pitch &middot; built for CRM platform teams</p>
-      <h1>The repeat-revenue layer for cash-pay clinics.</h1>
-      <p class="lede">Clinics that sell treatments on a clock &mdash; med spas, weight-loss, hormone, dental aesthetics &mdash; leak revenue in one specific place: the gap between visits. Recura closes it, proves what it added, and writes all of it back into the CRM the clinic already runs.</p>
-      <div class="badges">
-        <span class="badge"><i class="dot"></i>Nothing here is live yet</span>
-        <span class="badge">Numbers are modelled</span>
-        <span class="badge">Integrations are designed, not shipped</span>
-      </div>
+      <p class="kicker">For CRM platform teams</p>
+      <h1>Clinics earn on repeat visits. Most of them never happen.</h1>
+      <p class="lede">Med spas, weight-loss and hormone clinics sell treatments that run out on a schedule. Botox at three months. Filler at nine. When that date passes and nobody calls, the money is gone. Recura brings the patient back, takes the payment in the app, and writes all of it into the CRM the clinic already uses.</p>
+      <p class="disclose">Concept stage. Nothing is built yet, and every number on this page is an estimate.</p>
     </div>
     <aside class="counter">
-      <p class="cap">Value sitting in empty treatment chairs across US clinics<br>&mdash; since you opened this page</p>
+      <p class="cap">Money sitting in empty chairs at US clinics, since you opened this page</p>
       <div class="ticker num" id="ticker">$0</div>
-      <p class="foot">~11,500 US med spas &times; 5 unsold treatment hours a week &times; $300 an hour &asymp; $900M a year. Modelled, not measured. An appointment slot is perishable inventory: unsold, it is gone.</p>
+      <p class="foot">There are about 11,500 US med spas. Say each one leaves 5 treatment hours unsold a week at $300 an hour. That is roughly $900M a year. An empty slot cannot be sold later. It is just gone.</p>
     </aside>
   </header>
 
   <main>
-    <!-- 1 -->
     <section class="slot" id="problem" data-nav="The gap">
-      <p class="eyebrow">01 &mdash; The gap</p>
-      <h2>The patient came once. The clock ran out. Nobody called.</h2>
-      <p class="lede">Aesthetic and wellness medicine is the rare part of healthcare that behaves like retail: cash-pay, elective, high margin, repeatable on a schedule. Toxin fades in three to four months. Filler in nine to twelve. A weight-loss programme bills monthly by design. Every patient is a subscription waiting to be written, and almost nobody writes it.</p>
+      <p class="eyebrow">The gap</p>
+      <h2>The patient came once. Then nothing.</h2>
+      <p class="lede">These treatments wear off. Botox in three to four months. Filler in nine to twelve. A weight-loss programme bills every month by design. So every patient could be a repeat customer. Almost no clinic sets that up.</p>
       <div class="stats">
-        <div class="stat-card"><span class="stat num" data-count="11500" data-prefix="~">0</span><span class="stat-l">US med spas today, up from about 1,600 in 2010</span></div>
-        <div class="stat-card"><span class="stat num" data-count="21.4" data-prefix="$" data-suffix="B" data-dec="1">0</span><span class="stat-l">US med spa services in 2026, growing ~14% a year</span></div>
-        <div class="stat-card"><span class="stat num" data-count="1.25" data-prefix="$" data-suffix="B" data-dec="2">0</span><span class="stat-l">Med spa software market by 2034, from $387M in 2025</span></div>
+        <div class="stat-card"><span class="stat num" data-count="11500" data-prefix="~">0</span><span class="stat-l">US med spas today. In 2010 there were about 1,600.</span></div>
+        <div class="stat-card"><span class="stat num" data-count="21.4" data-prefix="$" data-suffix="B" data-dec="1">0</span><span class="stat-l">Spent at US med spas in 2026, growing about 14% a year</span></div>
+        <div class="stat-card"><span class="stat num" data-count="1.25" data-prefix="$" data-suffix="B" data-dec="2">0</span><span class="stat-l">Med spa software market by 2034, up from $387M in 2025</span></div>
       </div>
-      <p class="note">AmSpa and Grand View Research, read September 2026. Sources differ by up to 30%; the conservative end is used.</p>
+      <p class="note">Sources: AmSpa and Grand View Research, September 2026. Estimates vary by up to 30%. We used the lower end.</p>
       <div class="two">
-        <div class="card"><h3>The people who could sell, won&rsquo;t</h3><p>Injectors and nurses are clinicians. Asking a patient to add a package mid-treatment is the part of the job they like least, so it quietly does not happen.</p></div>
-        <div class="card"><h3>The clinic is shut when the patient decides</h3><p>She wants filler at 11pm. There is nobody to sell it to her, and by morning the impulse is gone.</p></div>
+        <div class="card"><h3>Nurses do not like selling</h3><p>The person doing the treatment is a clinician. Asking a patient to add a package feels wrong to them, so it quietly does not happen.</p></div>
+        <div class="card"><h3>The clinic is shut when the patient decides</h3><p>She wants filler at 11pm. Nobody is there to sell it to her. By morning she has moved on.</p></div>
       </div>
     </section>
 
-    <!-- 2 -->
     <section class="slot" id="wall" data-nav="Complaints">
-      <p class="eyebrow">02 &mdash; What clinics say about the tools they already pay for</p>
-      <h2>The software reviews well. The way it is sold does not.</h2>
-      <p>Six complaints repeat across public reviews of platforms in this category, paraphrased below. They are not feature gaps &mdash; they are commercial decisions, which is exactly why they are winnable. Turn a card over.</p>
+      <p class="eyebrow">What is wrong with the tools they have</p>
+      <h2>Clinics like the software. They hate the contracts.</h2>
+      <p>Read the public reviews of the tools in this market and the same six complaints come up again and again. None of them are about features. That is why they are easy to beat. Click a card to see what we do instead.</p>
       <div class="flips" id="flips"></div>
     </section>
 
-    <!-- 3 -->
-    <section class="slot" id="expect" data-nav="Expectations">
-      <p class="eyebrow">03 &mdash; Expectations</p>
-      <h2>What a clinic actually wants the app to do</h2>
-      <p>Not features &mdash; outcomes, in the owner&rsquo;s own words. Every screen Recura ships answers to one of these five.</p>
+    <section class="slot" id="expect" data-nav="What they want">
+      <p class="eyebrow">What they want</p>
+      <h2>What clinic owners actually ask for</h2>
+      <p>Not features. This is what they say when you ask them what would help.</p>
       <ol class="expects" id="expects"></ol>
     </section>
 
-    <!-- 4 -->
-    <section class="slot" id="loop" data-nav="The loop">
-      <p class="eyebrow">04 &mdash; The loop</p>
-      <h2>One empty slot, filled in five moves</h2>
-      <p>Left is the patient&rsquo;s phone. Right is the clinic&rsquo;s console. Step through, or press play and watch it run.</p>
+    <section class="slot" id="loop" data-nav="How it works">
+      <p class="eyebrow">How it works</p>
+      <h2>One empty slot, filled in five steps</h2>
+      <p>Left is the patient&rsquo;s phone. Right is the clinic&rsquo;s screen. Press play, or step through it yourself.</p>
       <div class="loop">
         <div class="phone" aria-hidden="true">
           <div class="notch"></div>
@@ -79,118 +71,115 @@
         </div>
         <div class="console">
           <div class="conhead">
-            <span class="ttl">Clinic console</span>
+            <span class="ttl">Clinic screen</span>
             <span class="st num" id="conState">Idle</span>
           </div>
           <div class="rows" id="rows"></div>
           <div class="cash">
-            <span class="l">Collected today</span>
+            <span class="l">Taken today</span>
             <span class="n num" id="cash">$0</span>
           </div>
         </div>
       </div>
       <div class="controls">
         <button class="btn" type="button" id="prev">&larr; Back</button>
-        <button class="btn primary" type="button" id="play">Play the loop</button>
+        <button class="btn primary" type="button" id="play">Play</button>
         <button class="btn" type="button" id="next">Next &rarr;</button>
         <span class="dots" id="dots" aria-hidden="true"></span>
       </div>
       <p class="stepcap" id="stepcap" role="status"></p>
     </section>
 
-    <!-- 5 -->
-    <section class="slot" id="capacity" data-nav="Capacity">
-      <p class="eyebrow">05 &mdash; Capacity</p>
+    <section class="slot" id="capacity" data-nav="Empty slots">
+      <p class="eyebrow">Empty slots</p>
       <h2>The week that fills itself</h2>
-      <p>Every treatment carries a clock. Recura reads the schedule against those clocks and offers the open slot to the patient whose window is due &mdash; priced to hold margin, not discounted in a panic. Hover a filled slot to see why that patient was chosen.</p>
+      <p>Every treatment has a date when it runs out. Recura checks the calendar against those dates. When a slot is free, it offers that slot to the patient who is due. Full price, not a panic discount. Hover a filled slot to see why that patient was picked.</p>
       <div class="calwrap">
         <div class="cal" id="cal"></div>
         <div class="legend">
           <span><i class="sw booked"></i>Booked</span>
-          <span><i class="sw open"></i>Open &mdash; perishable</span>
+          <span><i class="sw open"></i>Empty</span>
           <span><i class="sw filled"></i>Filled by Recura</span>
         </div>
         <div class="calbar">
           <button class="btn primary" type="button" id="runcal">Run Recura on this week</button>
-          <span class="calout num" id="calout">11 open slots &middot; <b>$0</b> recovered</span>
+          <span class="calout num" id="calout">11 empty slots &middot; <b>$0</b> recovered</span>
         </div>
       </div>
-      <p class="note">Illustrative week. Three slots stay open on purpose &mdash; no patient is due, and inventing a reason to discount is how clinics train patients to wait for discounts.</p>
+      <p class="note">Made-up week. Three slots stay empty on purpose. Nobody was due for those, and discounting to fill them only teaches patients to wait for a discount.</p>
     </section>
 
-    <!-- 6 -->
     <section class="slot" id="proof" data-nav="Proof">
-      <p class="eyebrow">06 &mdash; Proof</p>
-      <h2>The number nobody in this category will show you</h2>
-      <p>Every platform here reports the revenue that flowed through it and calls that its contribution. Recura holds back a random slice of the patient list, shows it nothing, and reports the difference. Set the true lift to zero and watch our invoice go with it.</p>
+      <p class="eyebrow">Proof</p>
+      <h2>The number nobody else will show you</h2>
+      <p>Other tools count every sale that passed through their app and call it their result. Some of those sales would have happened anyway. We hold back a random 10% of patients and send them nothing, then compare the two groups. Drag the lift to zero and watch our fee disappear.</p>
       <div class="lab">
         <div class="lab-controls">
           <div class="ctrl">
-            <label for="s-lift">True lift Recura creates <b><span id="v-lift">18</span>%</b></label>
+            <label for="s-lift">How much Recura really adds <b><span id="v-lift">18</span>%</b></label>
             <input type="range" id="s-lift" min="0" max="40" step="1" value="18">
-            <p class="hint">Drag to 0 &mdash; the holdout catches it, and the success fee lands at $0.</p>
+            <p class="hint">Set it to 0. The test group catches it and our fee lands at $0.</p>
           </div>
           <button class="btn primary" type="button" id="runlab">Run 90 days</button>
         </div>
         <div class="lab-stage">
-          <div class="dotgrid" id="dotgrid" role="img" aria-label="120 patients: 108 receiving Recura, 12 held out"></div>
+          <div class="dotgrid" id="dotgrid" role="img" aria-label="120 patients. 108 get Recura, 12 are held back."></div>
           <div class="lab-legend">
-            <span><i class="pd treated"></i>Treated group</span>
-            <span><i class="pd held"></i>Holdout &mdash; receives nothing</span>
+            <span><i class="pd treated"></i>Gets Recura</span>
+            <span><i class="pd held"></i>Held back, gets nothing</span>
             <span><i class="pd conv"></i>Booked a treatment</span>
           </div>
         </div>
       </div>
       <div class="lab-out">
         <div class="out-card naive">
-          <div class="who">What the category invoices on</div>
+          <div class="who">What other tools bill you for</div>
           <div class="big num" id="o-naive">$0</div>
-          <div class="big-l">all revenue that touched the app, counted as if the app caused it</div>
+          <div class="big-l">every sale that touched the app, counted as theirs</div>
         </div>
         <div class="out-card real">
-          <div class="who">What Recura invoices on</div>
+          <div class="who">What we bill you for</div>
           <div class="big num" id="o-incr">$0</div>
-          <div class="big-l">treated group minus holdout group, per patient, across the list</div>
+          <div class="big-l">the gap between the two groups, across the whole list</div>
         </div>
         <div class="out-card fee">
-          <div class="who">Our success fee &mdash; 8%</div>
+          <div class="who">Our fee, 8% of that gap</div>
           <div class="big num" id="o-labfee">$0</div>
-          <div class="big-l">zero when the holdout says we added nothing</div>
+          <div class="big-l">zero if the held-back group says we did nothing</div>
         </div>
       </div>
-      <p class="note" id="labnote">A 12-patient holdout is noisy on purpose &mdash; it is what a single clinic can spare. Results pool across clinics, which is how the model gets sharper with every account.</p>
+      <p class="note">Twelve patients is a small test group, so the number jumps around. That is honest, and it is all a single clinic can spare. Results from every clinic pool together, so the model gets sharper with each new account.</p>
     </section>
 
-    <!-- 7 -->
     <section class="slot" id="maths" data-nav="Both sides">
-      <p class="eyebrow">07 &mdash; Both sides</p>
-      <h2>What the clinic earns, and what we earn with it</h2>
-      <p>Move the sliders to a clinic you recognise. Both sides recalculate together, which is the entire point of the pricing: we cannot grow unless they do.</p>
+      <p class="eyebrow">Both sides</p>
+      <h2>What the clinic makes, and what we make</h2>
+      <p>Set the sliders to a clinic you know. Both sides move together. That is the point of the pricing: we cannot grow unless they do.</p>
       <div class="sim">
         <div class="ctrls">
           <div class="ctrl">
-            <label for="s-pat">Active patients <b class="num"><span id="v-pat">1,200</span></b></label>
+            <label for="s-pat">Patients on the list <b class="num"><span id="v-pat">1,200</span></b></label>
             <input type="range" id="s-pat" min="200" max="5000" step="100" value="1200">
           </div>
           <div class="ctrl">
-            <label for="s-tic">Average treatment <b class="num">$<span id="v-tic">450</span></b></label>
+            <label for="s-tic">Average treatment price <b class="num">$<span id="v-tic">450</span></b></label>
             <input type="range" id="s-tic" min="200" max="1500" step="10" value="450">
           </div>
           <div class="ctrl">
-            <label for="s-lap">Patients past their window <b class="num"><span id="v-lap">45</span>%</b></label>
+            <label for="s-lap">Patients past their due date <b class="num"><span id="v-lap">45</span>%</b></label>
             <input type="range" id="s-lap" min="20" max="70" step="1" value="45">
           </div>
-          <p class="hint">Modelled on 14% of lapsed patients recovered for one visit, 6% converting to a $79/month membership, and 18% buying products at $180 a year.</p>
+          <p class="hint">We assume 14% of overdue patients come back for one visit, 6% join a $79 a month membership, and 18% buy products worth $180 a year.</p>
         </div>
         <div class="panes">
           <div class="pane them">
             <div class="who">The clinic</div>
             <div class="big num" id="o-clinic">$0</div>
-            <div class="big-l">added revenue a year, measured against the holdout</div>
+            <div class="big-l">extra revenue a year, measured against the held-back group</div>
             <div class="lines">
-              <div class="line"><span>Lapsed patients recovered</span><span class="v num" id="o-rec">$0</span></div>
-              <div class="line"><span>New membership revenue</span><span class="v num" id="o-mem">$0</span></div>
-              <div class="line"><span>In-app product sales</span><span class="v num" id="o-prod">$0</span></div>
+              <div class="line"><span>Overdue patients brought back</span><span class="v num" id="o-rec">$0</span></div>
+              <div class="line"><span>New membership money</span><span class="v num" id="o-mem">$0</span></div>
+              <div class="line"><span>Products sold in the app</span><span class="v num" id="o-prod">$0</span></div>
             </div>
           </div>
           <div class="pane us">
@@ -198,65 +187,61 @@
             <div class="big num" id="o-us">$0</div>
             <div class="big-l">a year from this one clinic</div>
             <div class="lines">
-              <div class="line"><span>Subscription &mdash; $299/mo</span><span class="v num">$3,588</span></div>
-              <div class="line"><span>1.5% of in-app volume</span><span class="v num" id="o-take">$0</span></div>
-              <div class="line" id="feeline"><span>8% of measured lift <em id="capnote"></em></span><span class="v num" id="o-fee">$0</span></div>
+              <div class="line"><span>Monthly fee, $299</span><span class="v num">$3,588</span></div>
+              <div class="line"><span>1.5% of what patients spend in the app</span><span class="v num" id="o-take">$0</span></div>
+              <div class="line" id="feeline"><span>8% of the proven gap <em id="capnote"></em></span><span class="v num" id="o-fee">$0</span></div>
             </div>
           </div>
         </div>
       </div>
-      <p class="note">Assumption, not a result &mdash; no clinic has run on Recura yet. The success fee is capped at twice the subscription so an invoice can never surprise an owner.</p>
+      <p class="note">These are assumptions, not results. No clinic has run on Recura yet. The 8% fee stops at twice the monthly fee, so a bill can never surprise an owner.</p>
     </section>
 
-    <!-- 8 -->
-    <section class="slot" id="revenue" data-nav="Revenue">
-      <p class="eyebrow">08 &mdash; Revenue</p>
-      <h2>Four streams, three of them tied to the clinic winning</h2>
-      <p>A seat licence caps the business at what a clinic will pay for software. Charging on volume and on measured lift means the platform is paid for what it actually is: a commerce network with a clinical calendar attached. Select a stream.</p>
+    <section class="slot" id="revenue" data-nav="Our revenue">
+      <p class="eyebrow">Our revenue</p>
+      <h2>Four ways we make money</h2>
+      <p>A flat monthly fee alone caps us at whatever a clinic will pay for software. Three of these four grow when the clinic grows, with no new sale needed. Click one to see how it works.</p>
       <div class="revbar" id="revbar" role="tablist" aria-label="Revenue streams"></div>
       <div class="revdetail" id="revdetail" role="tabpanel" aria-live="polite"></div>
-      <p class="note">Modelled revenue mix at scale. Two of the four grow without a new sale, which is the difference between a platform and a subscription.</p>
+      <p class="note">Estimated mix once we are at scale.</p>
     </section>
 
-    <!-- 9 -->
-    <section class="slot" id="crm" data-nav="Integration">
-      <p class="eyebrow">09 &mdash; Integration</p>
-      <h2>Recura is a layer, not another island</h2>
-      <p>Clinics already run a CRM; agencies already run ten of them. Recura is built to sit inside whichever one is there &mdash; treatment cadence, wallet balances and attributed revenue written back as native records, so the CRM stays the place people work. Pick a platform.</p>
+    <section class="slot" id="crm" data-nav="Your CRM">
+      <p class="eyebrow">Your CRM</p>
+      <h2>We sit inside your CRM, not next to it</h2>
+      <p>Clinics already have a CRM, and agencies run ten of them. Recura writes into whichever one is there: when the patient is next due, what credit they are holding, what each treatment earned. Your CRM stays the place people work. Pick a platform to see what that looks like.</p>
       <div class="hub" id="hub" role="tablist" aria-label="CRM platforms"></div>
       <div class="pipe" aria-hidden="true">
-        <div class="pnode"><span class="pn">Patient app</span><span class="ps">wallet &middot; bookings &middot; points</span></div>
+        <div class="pnode"><span class="pn">Patient app</span><span class="ps">wallet, bookings, points</span></div>
         <div class="ppath"><i class="flow"></i><i class="flow d2"></i><i class="flow d3"></i></div>
-        <div class="pnode core"><span class="pn">Recura</span><span class="ps">clock &middot; ledger &middot; holdout</span></div>
+        <div class="pnode core"><span class="pn">Recura</span><span class="ps">due dates, wallet, test group</span></div>
         <div class="ppath"><i class="flow"></i><i class="flow d2"></i><i class="flow d3"></i></div>
-        <div class="pnode target"><span class="pn" id="pipeTarget">Salesforce</span><span class="ps" id="pipeObjects">Contact &middot; Opportunity</span></div>
+        <div class="pnode target"><span class="pn" id="pipeTarget">Salesforce</span><span class="ps" id="pipeObjects">Contact, Opportunity</span></div>
       </div>
       <div class="detail" id="crmdetail" role="tabpanel" aria-live="polite"></div>
-      <p class="note">Integration designs, not shipped connectors. Object names follow each platform&rsquo;s public developer documentation.</p>
+      <p class="note">These are integration designs, not shipped connectors. Object names come from each platform&rsquo;s public developer docs.</p>
     </section>
 
-    <!-- 10 -->
     <section class="slot" id="questions" data-nav="Questions">
-      <p class="eyebrow">10 &mdash; Questions</p>
-      <h2>What a platform team asks in the first ten minutes</h2>
-      <p>Answered here rather than deflected in a meeting.</p>
+      <p class="eyebrow">Questions</p>
+      <h2>What you are probably about to ask</h2>
+      <p>Answered here instead of dodged in a meeting.</p>
       <div class="qa" id="qa"></div>
     </section>
 
-    <!-- 11 -->
-    <section class="slot" id="objective" data-nav="Objective">
-      <p class="eyebrow">11 &mdash; Objective</p>
-      <h2>What this pitch is for</h2>
+    <section class="slot" id="objective" data-nav="Why now">
+      <p class="eyebrow">Why now</p>
+      <h2>Why we are showing you this early</h2>
       <div class="close">
-        <p>There is a class of clinic &mdash; cash-pay, appointment-bound, repeat by nature &mdash; whose revenue problem no CRM solves today, because the missing piece is not a record or a pipeline. It is a clock, a wallet, and proof.</p>
-        <p>Recura builds that piece, keeps it measurable, and keeps it open: every platform on the board above, plus a custom path for the ones that are not.</p>
-        <p class="small">Concept stage. The numbers are modelled, the integrations are designed, and the reason for showing it this early is to shape it with the people whose platforms it would live inside.</p>
+        <p>Thousands of clinics sell treatments on a clock and take the money up front. No CRM handles that today, because the missing piece is not a record or a pipeline. It is a due date, a wallet, and proof that the software did something.</p>
+        <p>We are building that piece. It works with every platform on the board above, and with anything else through the API.</p>
+        <p class="small">Nothing is built yet. The numbers are estimates and the integrations are designs. We are showing it this early so we can shape it with the people whose platforms it would live inside.</p>
       </div>
     </section>
   </main>
 
   <footer class="foot-bar">
-    <span>Recura &mdash; interactive concept pitch</span>
+    <span>Recura, interactive concept pitch</span>
     <span class="num">September 2026</span>
   </footer>
 </div>
