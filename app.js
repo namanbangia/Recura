@@ -341,47 +341,50 @@
   }
 
   /* ---------------------------------------------------------- proof lab */
-  var N = 120, HELD = 12, TICKET = 450, BASE_RATE = 0.22;
-  var grid = $("dotgrid"), labRunning = false, heldIdx = [];
-  if (grid) {
-    for (var k = 0; k < HELD; k++) heldIdx.push(Math.floor(k * (N / HELD)) + 4);
-    var cells = [];
-    for (var i2 = 0; i2 < N; i2++) cells.push('<i class="' + (heldIdx.indexOf(i2) > -1 ? "held" : "") + '"></i>');
-    grid.innerHTML = cells.join("");
+  var TREATED = 108, HELD = 12, TICKET = 450, BASE_RATE = 0.22;
+  var gT = $("grid-treated"), gH = $("grid-held"), labRunning = false;
+  function fillGrid(el, n) {
+    if (!el) return;
+    var s = "";
+    for (var i = 0; i < n; i++) s += "<i></i>";
+    el.innerHTML = s;
   }
-  function labNumbers(convT, convH) {
-    var treatedN = N - HELD;
-    var revTreated = convT * TICKET;
-    var perTreated = treatedN ? revTreated / treatedN : 0;
-    var perHeld = HELD ? (convH * TICKET) / HELD : 0;
-    var gap = Math.max(perTreated - perHeld, 0);
-    return { naive: revTreated, incremental: gap * N, fee: gap * N * 0.08 };
+  fillGrid(gT, TREATED);
+  fillGrid(gH, HELD);
+
+  function paintLab(convT, convH) {
+    var rateT = convT / TREATED, rateH = convH / HELD;
+    var gapPerPatient = Math.max(rateT - rateH, 0) * TICKET;
+    if ($("res-treated")) $("res-treated").textContent = convT + " booked";
+    if ($("res-held")) $("res-held").textContent = convH + " booked";
+    if ($("pct-treated")) $("pct-treated").textContent = Math.round(rateT * 100) + "%";
+    if ($("pct-held")) $("pct-held").textContent = Math.round(rateH * 100) + "%";
+    if ($("o-naive")) $("o-naive").textContent = usd(convT * TICKET);
+    if ($("o-incr")) $("o-incr").textContent = usd(gapPerPatient * (TREATED + HELD));
+    if ($("o-labfee")) $("o-labfee").textContent = usd(gapPerPatient * (TREATED + HELD) * 0.08);
   }
-  function paintLab(out) {
-    if ($("o-naive")) $("o-naive").textContent = usd(out.naive);
-    if ($("o-incr")) $("o-incr").textContent = usd(out.incremental);
-    if ($("o-labfee")) $("o-labfee").textContent = usd(out.fee);
-  }
+
   function runLab() {
-    if (!grid || labRunning) return;
+    if (!gT || !gH || labRunning) return;
     labRunning = true;
     var lift = parseInt(($("s-lift") || { value: 18 }).value, 10) / 100;
-    var dots = Array.prototype.slice.call(grid.children);
-    dots.forEach(function (d) { d.classList.remove("conv"); });
-    var order = dots.map(function (_, i) { return i; }).sort(function () { return Math.random() - 0.5; });
+    var dots = Array.prototype.slice.call(gT.children).map(function (d) { return { el: d, held: false }; })
+      .concat(Array.prototype.slice.call(gH.children).map(function (d) { return { el: d, held: true }; }));
+    dots.forEach(function (d) { d.el.classList.remove("conv"); });
+    var order = dots.slice().sort(function () { return Math.random() - 0.5; });
     var convT = 0, convH = 0, i = 0, btn = $("runlab");
     if (btn) { btn.disabled = true; btn.textContent = "Running 90 days"; }
     (function next() {
       if (i >= order.length) {
-        paintLab(labNumbers(convT, convH));
+        paintLab(convT, convH);
         if (btn) { btn.disabled = false; btn.textContent = "Run it again"; }
         labRunning = false;
         return;
       }
-      var dot = dots[order[i]], isHeld = dot.classList.contains("held");
-      if (Math.random() < (isHeld ? BASE_RATE : BASE_RATE * (1 + lift))) {
-        dot.classList.add("conv");
-        if (isHeld) convH++; else convT++;
+      var d = order[i];
+      if (Math.random() < (d.held ? BASE_RATE : BASE_RATE * (1 + lift))) {
+        d.el.classList.add("conv");
+        if (d.held) convH++; else convT++;
       }
       i++;
       if (reduce) next(); else setTimeout(next, 14);
@@ -395,21 +398,25 @@
   }
   // show a finished result on load, so the section is never blank
   (function seedLab() {
-    var convT = Math.round((N - HELD) * BASE_RATE * 1.18), convH = Math.round(HELD * BASE_RATE);
-    paintLab(labNumbers(convT, convH));
-    if (grid) {
-      var picked = 0;
-      Array.prototype.forEach.call(grid.children, function (d) {
-        if (picked < convT + convH && Math.random() < 0.3) { d.classList.add("conv"); picked++; }
-      });
-    }
+    // 12 patients round harshly: 2.64 expected bookings rounds up to 3, which reads as
+    // no gap at all. Seed the floor and let Run 90 days show the real spread.
+    var convT = Math.round(TREATED * BASE_RATE * 1.18), convH = Math.floor(HELD * BASE_RATE);
+    var mark = function (el, n) {
+      if (!el) return;
+      var kids = Array.prototype.slice.call(el.children).sort(function () { return Math.random() - 0.5; });
+      kids.slice(0, n).forEach(function (k) { k.classList.add("conv"); });
+    };
+    mark(gT, convT);
+    mark(gH, convH);
+    paintLab(convT, convH);
   })();
 
   /* ---------------------------------------------------------- simulator */
+  var LAPSED_SHARE = 0.45; // share of the list past its due date, held fixed to keep the section simple
   function sim() {
-    var sPat = $("s-pat"), sTic = $("s-tic"), sLap = $("s-lap");
-    if (!sPat || !sTic || !sLap) return;
-    var pat = +sPat.value, tic = +sTic.value, lap = +sLap.value / 100;
+    var sPat = $("s-pat"), sTic = $("s-tic");
+    if (!sPat || !sTic) return;
+    var pat = +sPat.value, tic = +sTic.value, lap = LAPSED_SHARE;
     var recovered = pat * lap * 0.14 * tic;
     var membership = pat * 0.06 * 79 * 12;
     var product = pat * 0.18 * 180;
@@ -419,19 +426,20 @@
     var base = 3588, take = inApp * 0.015;
     var raw = clinic * 0.08, cap = base * 2, fee = Math.min(raw, cap);
 
+    var us = base + take + fee;
     $("v-pat").textContent = pat.toLocaleString("en-US");
     $("v-tic").textContent = tic.toLocaleString("en-US");
-    $("v-lap").textContent = Math.round(lap * 100);
+    if ($("o-ratio")) $("o-ratio").textContent = "$" + Math.round(clinic / us);
     $("o-clinic").textContent = usd(clinic);
     $("o-rec").textContent = usd(recovered);
     $("o-mem").textContent = usd(membership);
     $("o-prod").textContent = usd(product);
-    $("o-us").textContent = usd(base + take + fee);
+    $("o-us").textContent = usd(us);
     $("o-take").textContent = usd(take);
     $("o-fee").textContent = usd(fee);
-    if ($("capnote")) $("capnote").textContent = raw > cap ? "(capped)" : "";
+    if ($("capnote")) $("capnote").textContent = raw > cap ? "(at the cap)" : "";
   }
-  ["s-pat", "s-tic", "s-lap"].forEach(function (id) {
+  ["s-pat", "s-tic"].forEach(function (id) {
     var el = $(id);
     if (el) el.addEventListener("input", sim);
   });

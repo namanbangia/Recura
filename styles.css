@@ -253,19 +253,30 @@ a{color:var(--primary-hover)}
 /* ---------- proof lab ---------- */
 .lab{display:grid;grid-template-columns:minmax(0,290px) minmax(0,1fr);gap:18px;align-items:start;margin-top:6px}
 .lab-controls{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow-sm)}
-.lab-stage{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-sm)}
-.dotgrid{display:grid;grid-template-columns:repeat(20,1fr);gap:6px}
+.groups{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:14px}
+.group{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm)}
+.group.held{border-style:dashed;border-color:var(--text-muted);background:var(--bg-subtle)}
+.ghead{font-size:13px;color:var(--text-muted);margin:0 0 12px}
+.ghead b{color:var(--text-main);font-weight:700}
+.dotgrid{display:grid;grid-template-columns:repeat(18,1fr);gap:5px}
+.dotgrid.few{grid-template-columns:repeat(4,1fr);gap:7px}
 .pd,.dotgrid i{width:100%;aspect-ratio:1;border-radius:50%;display:block;background:#dfe3e7;transition:background .25s,transform .25s}
-.dotgrid i.held{background:#fff;box-shadow:inset 0 0 0 2px #b9c1c9}
-.dotgrid i.conv{background:var(--primary);transform:scale(1.14)}
-.dotgrid i.held.conv{background:#fff;box-shadow:inset 0 0 0 3px var(--secondary)}
-.lab-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--text-muted);margin-top:16px}
+.dotgrid i.conv{background:var(--primary);transform:scale(1.12)}
+.gres{margin:14px 0 0;display:flex;align-items:baseline;gap:10px;font-size:13.5px;color:var(--text-muted)}
+.gres em{font-style:normal;font-family:var(--font-heading);font-size:26px;font-weight:800;color:var(--text-main);margin-left:auto;letter-spacing:-.02em}
+.group.held .gres em{color:var(--text-muted)}
+.lab-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--text-muted);margin-top:14px}
 .lab-legend span{display:flex;align-items:center;gap:7px}
 .lab-legend .pd{width:12px;height:12px;flex:none}
 .lab-legend .pd.treated{background:#dfe3e7}
-.lab-legend .pd.held{background:#fff;box-shadow:inset 0 0 0 2px #b9c1c9}
 .lab-legend .pd.conv{background:var(--primary)}
-.lab-out{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));margin-top:16px}
+.gapline{font-family:var(--font-heading);font-size:clamp(17px,2.4vw,21px);font-weight:700;color:var(--text-main);margin:22px 0 16px;max-width:36ch;letter-spacing:-.02em}
+.feenote{
+  margin:14px 0 0;font-size:15px;color:var(--text-main);
+  background:var(--primary-tint);border-radius:var(--radius);padding:14px 18px;display:inline-block;
+}
+.feenote b{font-family:var(--font-heading);font-size:19px;color:var(--primary-hover);font-weight:800}
+.lab-out{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:16px}
 .out-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
 .out-card.naive{border-top:3px solid #b9c1c9}
 .out-card.real{border-top:3px solid var(--primary)}
@@ -293,6 +304,12 @@ input[type=range]{width:100%;accent-color:var(--primary);height:24px;margin:0}
 .line{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;color:var(--text-muted)}
 .line .v{font-weight:700;color:var(--text-main);font-variant-numeric:tabular-nums}
 .line em{font-style:normal;font-size:11px;font-weight:700;color:var(--primary-hover)}
+.ratio{
+  margin:18px 0 0;background:var(--secondary);color:#fff;border-radius:var(--radius);
+  padding:20px 24px;font-family:var(--font-heading);font-size:clamp(18px,2.6vw,24px);
+  font-weight:700;letter-spacing:-.02em;max-width:none;
+}
+.ratio b{color:var(--primary);font-weight:800}
 
 /* ---------- revenue ---------- */
 .revbar{display:flex;gap:3px;height:58px;margin:22px 0 14px}
@@ -369,7 +386,9 @@ input[type=range]{width:100%;accent-color:var(--primary);height:24px;margin:0}
 @media (max-width:900px){
   .hero{grid-template-columns:1fr;gap:26px}
   .loop,.sim,.lab{grid-template-columns:1fr}
-  .dotgrid{grid-template-columns:repeat(15,1fr)}
+  .groups{grid-template-columns:1fr}
+  .dotgrid{grid-template-columns:repeat(12,1fr)}
+  .dotgrid.few{grid-template-columns:repeat(6,1fr)}
   .pipe{gap:8px}
   .ppath{flex:0 0 34px;min-width:34px}
 }

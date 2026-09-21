@@ -127,49 +127,59 @@
     <section class="slot" id="proof" data-nav="Proof">
       <p class="eyebrow">Proof</p>
       <h2>The number nobody else will show you</h2>
-      <p>Other tools count every sale that passed through their app and call it their result. Some of those sales would have happened anyway. We hold back a random 10% of patients and send them nothing, then compare the two groups. Drag the lift to zero and watch our fee disappear.</p>
+      <p>Other tools count every sale that went through their app and call it their result. But some of those patients would have booked anyway. So we take 12 patients at random and send them nothing at all. Whatever that small group does on its own, the big group would have done too. Only the difference belongs to us.</p>
+
       <div class="lab">
         <div class="lab-controls">
           <div class="ctrl">
-            <label for="s-lift">How much Recura really adds <b><span id="v-lift">18</span>%</b></label>
+            <label for="s-lift">How well Recura works <b>+<span id="v-lift">18</span>%</b></label>
             <input type="range" id="s-lift" min="0" max="40" step="1" value="18">
-            <p class="hint">Set it to 0. The test group catches it and our fee lands at $0.</p>
+            <p class="hint">Drag it to 0. The held-back group catches it, and our fee becomes $0.</p>
           </div>
           <button class="btn primary" type="button" id="runlab">Run 90 days</button>
         </div>
-        <div class="lab-stage">
-          <div class="dotgrid" id="dotgrid" role="img" aria-label="120 patients. 108 get Recura, 12 are held back."></div>
-          <div class="lab-legend">
-            <span><i class="pd treated"></i>Gets Recura</span>
-            <span><i class="pd held"></i>Held back, gets nothing</span>
-            <span><i class="pd conv"></i>Booked a treatment</span>
+
+        <div class="groups">
+          <div class="group">
+            <p class="ghead"><b>108 patients</b> get Recura</p>
+            <div class="dotgrid" id="grid-treated" role="img" aria-label="108 patients who get Recura"></div>
+            <p class="gres"><span id="res-treated">24 booked</span> <em class="num" id="pct-treated">22%</em></p>
+          </div>
+          <div class="group held">
+            <p class="ghead"><b>12 patients</b> held back</p>
+            <div class="dotgrid few" id="grid-held" role="img" aria-label="12 patients who are sent nothing"></div>
+            <p class="gres"><span id="res-held">2 booked</span> <em class="num" id="pct-held">17%</em></p>
           </div>
         </div>
       </div>
+
+      <div class="lab-legend">
+        <span><i class="pd conv"></i>Booked a treatment</span>
+        <span><i class="pd treated"></i>Did not book</span>
+      </div>
+
+      <p class="gapline">The gap between those two percentages is the only thing we take credit for.</p>
+
       <div class="lab-out">
         <div class="out-card naive">
-          <div class="who">What other tools bill you for</div>
+          <div class="who">Another tool would bill you for</div>
           <div class="big num" id="o-naive">$0</div>
-          <div class="big-l">every sale that touched the app, counted as theirs</div>
+          <div class="big-l">every sale that went through the app</div>
         </div>
         <div class="out-card real">
-          <div class="who">What we bill you for</div>
+          <div class="who">We bill you for</div>
           <div class="big num" id="o-incr">$0</div>
-          <div class="big-l">the gap between the two groups, across the whole list</div>
-        </div>
-        <div class="out-card fee">
-          <div class="who">Our fee, 8% of that gap</div>
-          <div class="big num" id="o-labfee">$0</div>
-          <div class="big-l">zero if the held-back group says we did nothing</div>
+          <div class="big-l">only the gap between the two groups</div>
         </div>
       </div>
-      <p class="note">Twelve patients is a small test group, so the number jumps around. That is honest, and it is all a single clinic can spare. Results from every clinic pool together, so the model gets sharper with each new account.</p>
+      <p class="feenote">Our fee is 8% of that gap: <b class="num" id="o-labfee">$0</b></p>
+      <p class="note">Twelve patients is a small group, so the number moves around each time you run it. That is real, and it is all one clinic can spare. Every clinic's results pool together, so the answer gets sharper as more clinics join.</p>
     </section>
 
     <section class="slot" id="maths" data-nav="Both sides">
       <p class="eyebrow">Both sides</p>
       <h2>What the clinic makes, and what we make</h2>
-      <p>Set the sliders to a clinic you know. Both sides move together. That is the point of the pricing: we cannot grow unless they do.</p>
+      <p>Set the two sliders to a clinic you know. Both sides move together, because almost everything we charge is a share of what the clinic earns.</p>
       <div class="sim">
         <div class="ctrls">
           <div class="ctrl">
@@ -180,36 +190,33 @@
             <label for="s-tic">Average treatment price <b class="num">$<span id="v-tic">450</span></b></label>
             <input type="range" id="s-tic" min="200" max="1500" step="10" value="450">
           </div>
-          <div class="ctrl">
-            <label for="s-lap">Patients past their due date <b class="num"><span id="v-lap">45</span>%</b></label>
-            <input type="range" id="s-lap" min="20" max="70" step="1" value="45">
-          </div>
-          <p class="hint">We assume 14% of overdue patients come back for one visit, 6% join a $79 a month membership, and 18% buy products worth $180 a year.</p>
+          <p class="hint">We assume 45% of the list is past its due date, 14% of those come back for one visit, 6% join a $79 a month membership, and 18% buy products worth $180 a year.</p>
         </div>
         <div class="panes">
           <div class="pane them">
-            <div class="who">The clinic</div>
+            <div class="who">The clinic earns</div>
             <div class="big num" id="o-clinic">$0</div>
-            <div class="big-l">extra revenue a year, measured against the held-back group</div>
+            <div class="big-l">extra money a year</div>
             <div class="lines">
-              <div class="line"><span>Overdue patients brought back</span><span class="v num" id="o-rec">$0</span></div>
-              <div class="line"><span>New membership money</span><span class="v num" id="o-mem">$0</span></div>
+              <div class="line"><span>Overdue patients who come back</span><span class="v num" id="o-rec">$0</span></div>
+              <div class="line"><span>New memberships</span><span class="v num" id="o-mem">$0</span></div>
               <div class="line"><span>Products sold in the app</span><span class="v num" id="o-prod">$0</span></div>
             </div>
           </div>
           <div class="pane us">
-            <div class="who">Recura</div>
+            <div class="who">We earn</div>
             <div class="big num" id="o-us">$0</div>
             <div class="big-l">a year from this one clinic</div>
             <div class="lines">
-              <div class="line"><span>Monthly fee, $299</span><span class="v num">$3,588</span></div>
-              <div class="line"><span>1.5% of what patients spend in the app</span><span class="v num" id="o-take">$0</span></div>
-              <div class="line" id="feeline"><span>8% of the proven gap <em id="capnote"></em></span><span class="v num" id="o-fee">$0</span></div>
+              <div class="line"><span>Monthly fee</span><span class="v num">$3,588</span></div>
+              <div class="line"><span>Cut of app sales</span><span class="v num" id="o-take">$0</span></div>
+              <div class="line" id="feeline"><span>Share of the extra money <em id="capnote"></em></span><span class="v num" id="o-fee">$0</span></div>
             </div>
           </div>
         </div>
       </div>
-      <p class="note">These are assumptions, not results. No clinic has run on Recura yet. The 8% fee stops at twice the monthly fee, so a bill can never surprise an owner.</p>
+      <p class="ratio">The clinic makes <b class="num" id="o-ratio">$10</b> for every <b>$1</b> it pays us.</p>
+      <p class="note">These are assumptions, not results. No clinic has run on Recura yet. Our share of the extra money stops at twice the monthly fee, so a bill can never surprise an owner.</p>
     </section>
 
     <section class="slot" id="revenue" data-nav="Our revenue">
